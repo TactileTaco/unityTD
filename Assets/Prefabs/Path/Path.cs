@@ -79,11 +79,8 @@ public class Path : MonoBehaviour {
         GenWalls();
     }
 
-    private int _updates;
-	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log("Update" + ++_updates);
 	   if (nodesInScene.Length != nodes.Length)
        {
             _reset();
@@ -100,4 +97,12 @@ public class Path : MonoBehaviour {
             }
        }
 	}
+
+    void OnDrawGizmos()
+    {
+        foreach (Vector3 node in nodes)
+        {
+            Gizmos.DrawSphere(node, 0.5f);
+        }
+    }
 }
