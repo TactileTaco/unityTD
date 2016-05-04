@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tower : MonoBehaviour 
 {
-    public GameObject towerPrefab;
+    public GameObject tower;
     public GameObject enemySource;
 
     public enum TOWERSTATE
@@ -30,6 +30,18 @@ public class Tower : MonoBehaviour
 	   switch(state)
        {
             case TOWERSTATE.PLACING:
+                if (_validLocation())
+                {
+                    tower.renderer.color = Color.Green;
+                }
+                else
+                {
+                    tower.renderer.color = Color.Red;
+                }
+                if (Input.GetMouseButtonUp())
+                {
+                    state = TOWERSTATE.CONSTRUCTING;
+                }
                 break;
             case TOWERSTATE.CONSTRUCTING:
                 break;
